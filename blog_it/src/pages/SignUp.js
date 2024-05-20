@@ -8,7 +8,7 @@ function SignUp() {
 		<Banner h1="" h2="sign up"/>
 		<div className="container">
 			<div className="row">
-				<div className="col-lg-8 offset-2">
+				<div className="col-lg-8 offset-lg-2">
 					<form style={{marginTop:"10vmin"}}>
 						<div className="form-group">
 							<label for="exampleInputEmail1">Email address</label>
