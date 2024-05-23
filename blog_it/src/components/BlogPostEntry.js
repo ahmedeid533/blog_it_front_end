@@ -11,11 +11,11 @@ function BlogPostEntry(props) {
 				<span>{post.category}</span>
 				<a href="/post-details"><h4>{post.title}</h4></a>
 				<ul className="post-info">
-					<li><a href="https://">Admin</a></li>
+					<li><a href="https://">{post.author}</a></li>
 					<li><a href="https://">{post.date}</a></li>
 					<li><a href="https://">{post.commentsCount}</a></li>
 				</ul>
-				<p>You can browse different tags such as <a rel="nofollow" href="https://templatemo.com/tag/multi-page" target="_parent">multi-page</a>, <a rel="nofollow" href="https://templatemo.com/tag/resume" target="_parent">resume</a>, <a rel="nofollow" href="https://templatemo.com/tag/video" target="_parent">video</a>, etc. to see more CSS templates. Sed hendrerit rutrum arcu, non malesuada nisi...</p>
+				<p>{post.body}</p>
 				<div className="post-options">
 					<div className="row">
 						<div className="col-6">
