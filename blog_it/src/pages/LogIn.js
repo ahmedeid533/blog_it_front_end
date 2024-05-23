@@ -9,7 +9,7 @@ function Login() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		const response = await fetch("http://localhost:5000/auth/login", {
+		const response = await fetch(process.env.REACT_APP_API + "/auth/login", {
 			method: "POST",
 			credentials: 'include',
 			headers: {

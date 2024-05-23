@@ -20,7 +20,7 @@ function Home() {
 	}
 	const fetchBlogs = () => {
 
-		fetch("http://localhost:5000/posts", {
+		fetch(process.env.REACT_APP_API + "/posts", {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",

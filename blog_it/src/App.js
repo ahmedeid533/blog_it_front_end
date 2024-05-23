@@ -28,7 +28,7 @@ function getCookie(cname) {
 const refresh = setInterval(() => {
 	const jwt = getCookie("jwt");
 	if(jwt) {
-		fetch("http://localhost:5000/auth/refresh", {
+		fetch(process.env.REACT_APP_API + "/auth/refresh", {
 			method: "POST",
 			credentials: 'include',
 			headers: {
@@ -45,7 +45,7 @@ const refresh = setInterval(() => {
 	}
 }, 1000 * 60 * 15);
 if(getCookie("jwt")) {
-	fetch("http://localhost:5000/auth/refresh", {
+	fetch(process.env.REACT_APP_API+"/auth/refresh", {
 		credentials: 'include',
 		headers: {
 			"Content-Type": "application/json"
