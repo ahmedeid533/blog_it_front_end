@@ -23,7 +23,6 @@ function Login() {
 		const data = await response.json();
 		localStorage.setItem("accessToken", data.accessToken);
 		alert(document.cookie);
-		document.cookie = data.cookie;
 		window.location.href = "/";
 		console.log(data);
 	}
