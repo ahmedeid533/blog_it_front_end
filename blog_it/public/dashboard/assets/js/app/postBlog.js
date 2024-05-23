@@ -1,5 +1,5 @@
 function postData () {
-	fetch(process.env.REACT_APP_API + "/posts", {
+	fetch("https://blog-it-zjku.onrender.com" + "/posts", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",

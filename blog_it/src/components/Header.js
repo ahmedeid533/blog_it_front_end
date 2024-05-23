@@ -26,6 +26,7 @@ function Header() {
 		localStorage.removeItem('accessToken');
 		fetch('http://localhost:5000/auth/logout', {
 			method: 'POST',
+			credentials: 'include',
 			headers: {
 				'Content-Type': 'application/json'
 			},

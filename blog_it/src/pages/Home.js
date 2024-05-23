@@ -19,7 +19,6 @@ function Home() {
 		share: ['Facebook', 'Twitter', 'LinkedIn']
 	}
 	const fetchBlogs = () => {
-
 		fetch(process.env.REACT_APP_API + "/posts", {
 			method: "GET",
 			headers: {
@@ -35,7 +34,7 @@ function Home() {
 				post.share = ['Facebook', 'Twitter', 'LinkedIn'];
 				return post;
 			})
-			setBlog(data.posts.splice(1, 4));
+			setBlog(data.posts.splice(3, 6));
 			console.log(data.posts)
 		})
 		.catch(err => {

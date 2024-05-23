@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Banner from "../components/Banner";
 import { Link } from "react-router-dom";
 
 function SignUp() {
-	const [email, setEmail] = React.useState("");
-	const [password, setPassword] = React.useState("");
-	const [username, setUsername] = React.useState("");
-	const [error, setError] = React.useState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [username, setUsername] = useState("");
+	const [error, setError] = useState("");
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();

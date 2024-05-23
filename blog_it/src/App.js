@@ -10,24 +10,8 @@ import SignUp from './pages/SignUp';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-function getCookie(cname) {
-	let name = cname + "=";
-	let decodedCookie = decodeURIComponent(document.cookie);
-	let ca = decodedCookie.split(';');
-	for(let i = 0; i <ca.length; i++) {
-	  let c = ca[i];
-	  while (c.charAt(0) == ' ') {
-		c = c.substring(1);
-	  }
-	  if (c.indexOf(name) == 0) {
-		return c.substring(name.length, c.length);
-	  }
-	}
-	return "";
-  }
-const refresh = setInterval(() => {
-	const jwt = getCookie("jwt");
-	if(jwt) {
+function refresh (){
+	if(!localStorage.getItem("accessToken")) {
 		fetch(process.env.REACT_APP_API + "/auth/refresh", {
 			method: "POST",
 			credentials: 'include',
@@ -37,28 +21,43 @@ const refresh = setInterval(() => {
 		})
 		.then(res => res.json())
 		.then(data => {
+			if (!data.accessToken) {
+				Link.to("/login");
+			}else{
 			localStorage.setItem("accessToken", data.accessToken);
+		}
+		})
+		.catch(err => {
+			console.log(err);
 		})
 	} else {
 		Link.to("/login");
 		clearInterval(refresh);
 	}
-}, 1000 * 60 * 15);
-if(getCookie("jwt")) {
-	fetch(process.env.REACT_APP_API+"/auth/refresh", {
-		credentials: 'include',
-		headers: {
-			"Content-Type": "application/json"
-		},
-	})
-	.then(res => res.json())
-	.then(data => {
-		localStorage.setItem("accessToken", data.accessToken);
-	})
-} else {
-	window.location.href = "/login";
-	clearInterval(refresh);
 }
+
+setInterval( refresh, 1000 * 60 * 15);
+// if(!localStorage.getItem("accessToken")) {
+// 	fetch(process.env.REACT_APP_API + "/auth/refresh", {
+// 		credentials: 'include',
+// 		headers: {
+// 			"Content-Type": "application/json"
+// 		},
+// 	})
+// 	.then(res => res.json())
+// 	.then(data => {
+// 		if (!data.accessToken) {
+			
+// 		}else{
+// 		localStorage.setItem("accessToken", data.accessToken);
+// 	}
+// 	})
+// 	.catch(err => {
+// 		console.log(err);
+// 	})
+// } else {
+// 	window.location.href = "/login";
+// }
 
 function App() {
 
