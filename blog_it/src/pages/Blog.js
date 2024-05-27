@@ -70,7 +70,7 @@ function BlogPosts () {
 		fetchPosts();
 	}, [location])
 	useEffect(() => {
-		if (page * 4 <= posts.length) {
+		if ((page - 1) * 4 < posts.length) {
 			setPostsPage(posts.slice((page - 1) * 4, page * 4));
 		} else {
 			setPostsPage(posts.slice((page - 1) * 4));
