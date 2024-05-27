@@ -25,7 +25,7 @@ function Login() {
 		localStorage.setItem("accessToken", data.accessToken);
 		localStorage.setItem("isAdmin", data.isAdmin);
 		if (data.isAdmin) {
-			window.location.href = "/blog_it/dashboard/index.html";
+			window.location.href = "/blogit/dashboard/index.html";
 		} else {
 			window.location.href = "/";
 		}	
