@@ -68,6 +68,7 @@ function BlogPosts () {
 
 	useEffect(() => {
 		fetchPosts();
+		setPage(1);
 	}, [location])
 	useEffect(() => {
 		if ((page - 1) * 4 < posts.length) {
