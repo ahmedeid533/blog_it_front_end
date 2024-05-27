@@ -109,19 +109,19 @@ function BlogPosts () {
                     <li className="active"><i>{page}</i></li>
 
                     {
-						(page + 1) * 4 <= posts.length
+						(page ) * 4 < posts.length
 						&& <li onClick={() => {
 							setPage(page + 1)
 						}}><i>{page + 1}</i></li>
 					}
 					{
-						(page + 2) * 4 <= posts.length
+						(page + 1) * 4 < posts.length
 						&& <li onClick={() => {
 							setPage(page + 2)
 						}}><i>{page + 2}</i></li>
 					}
 					{
-						(page + 1) * 4 <= posts.length
+						(page ) * 4 <= posts.length
 						&& <li onClick={() => {
 							setPage(page + 1)
 						}}><i>{">"}</i></li>
