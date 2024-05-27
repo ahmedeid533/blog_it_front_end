@@ -22,13 +22,18 @@ function Login() {
 		})
 		.catch(e => console.log(e))
 		const data = await response.json();
-		localStorage.setItem("accessToken", data.accessToken);
-		localStorage.setItem("isAdmin", data.isAdmin);
-		if (data.isAdmin) {
-			window.location.href = "/blogit/dashboard/index.html";
+		if(data.accessToken){
+			localStorage.setItem("accessToken", data.accessToken);
+			localStorage.setItem("isAdmin", data.isAdmin);
+			if (data.isAdmin) {
+				window.location.href = "/blogit/dashboard/index.html";
+			} else {
+				window.location.href = "/";
+			}	
 		} else {
-			window.location.href = "/";
-		}	
+			setError(data.message);
+		}
+		
 	}
 
 	return (
