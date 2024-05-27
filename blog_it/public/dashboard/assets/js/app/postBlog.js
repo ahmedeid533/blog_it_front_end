@@ -8,7 +8,8 @@ function postData () {
 		body: JSON.stringify({
 			title: document.getElementById("post_title").value,
 			author: document.getElementById("auther_id").value,
-			body: document.getElementById("postText").value
+			body: document.getElementById("postText").value,
+			categories: document.getElementById("category").value,
 		})
 	})
 }
