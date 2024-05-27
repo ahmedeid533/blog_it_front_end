@@ -19,12 +19,16 @@ function Login() {
 				email,
 				password
 			})
-		});
+		})
+		.catch(e => console.log(e))
 		const data = await response.json();
 		localStorage.setItem("accessToken", data.accessToken);
-		alert(document.cookie);
-		window.location.href = "/";
-		console.log(data);
+		localStorage.setItem("isAdmin", data.isAdmin);
+		if (data.isAdmin) {
+			window.location.href = "/blog_it/dashboard/index.html";
+		} else {
+			window.location.href = "/";
+		}	
 	}
 
 	return (

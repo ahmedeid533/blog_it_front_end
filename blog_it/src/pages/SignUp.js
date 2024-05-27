@@ -23,6 +23,7 @@ function SignUp() {
 		});
 		const data = await response.json();
 		localStorage.setItem("accessToken", data.accessToken);
+		localStorage.setItem("isAdmin", data.isAdmin);
 		alert(data.accessToken);
 		console.log(data);
 	}
@@ -43,7 +44,7 @@ function SignUp() {
 				<div className="col-lg-8 offset-lg-2">
 					<div style={{marginTop:"10vmin"}}>
 					<div className="form-group">
-							<label for="username">Username</label>
+							<label htmlFor="username">Username</label>
 							<input type="username"
 								className="form-control"
 								id="username"
@@ -52,7 +53,7 @@ function SignUp() {
 							/>
 						</div>
 						<div className="form-group">
-							<label for="exampleInputEmail1">Email address</label>
+							<label htmlFor="exampleInputEmail1">Email address</label>
 							<input type="email"
 								className="form-control"
 								id="exampleInputEmail1"
@@ -62,7 +63,7 @@ function SignUp() {
 							/>
 						</div>
 						<div className="form-group">
-							<label for="exampleInputPassword1">Password</label>
+							<label htmlFor="exampleInputPassword1">Password</label>
 							<input type="password"
 								className="form-control"
 								id="exampleInputPassword1"
@@ -71,7 +72,7 @@ function SignUp() {
 							/>
 						</div>
 						<div className="form-group">
-							<label for="exampleInputPassword1">Confirm Password</label>
+							<label htmlFor="exampleInputPassword1">Confirm Password</label>
 							<input type="password"
 								className="form-control"
 								id="exampleInputPassword1"

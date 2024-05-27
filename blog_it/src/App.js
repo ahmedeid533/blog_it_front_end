@@ -67,8 +67,9 @@ function App() {
         <Routes>
 		  <Route path="*" element={<Home/>} />
           <Route path="/" index exact element={<Home/>} />
-          <Route path="/blog" element={<Blog/>} />
-          <Route path="/post-details" element={<PostDetails/>} />
+          <Route path="/blog/:id" element={<Blog/>} />
+		  <Route path="/blog" element={<Blog/>} />
+		  <Route path="/post-details" element={<PostDetails/>} />
 		  <Route path="/login" element={<Login/>} />
 		  <Route path="/signup" element={<SignUp/>} />
         </Routes>

@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Header() {
-	const [signed, setsigned] = React.useState(false);
+	const [signed, setsigned] = useState(false);
+	const [isAdmin, setIsAdmin] = useState(false);
 	const clearField = (index) => {
 		console.log('clearField', index);
 		for (let i = 0; i < 3; i++) {
@@ -16,9 +17,14 @@ function Header() {
 	}
 	const setSinedIn = () => {
 		const accessToken = localStorage.getItem('accessToken');
-		console.log('accessToken', accessToken);
+		const isAdmin = localStorage.getItem('isAdmin');
 		if (accessToken) {
 			setsigned(true);
+		}
+		if (isAdmin === "undefined" || isAdmin === "false") {
+			setIsAdmin(false);
+		} else {
+			setIsAdmin(true);
 		}
 	}
 
@@ -47,7 +53,7 @@ function Header() {
 				</button>
 				<div className="collapse navbar-collapse" id="navbarResponsive">
 				<ul className="navbar-nav ml-auto">
-					{signed && <li className="nav-item-button" onClick={()=>{clearField(4)}}><a className="nav-link" href={process.env.PUBLIC_URL+"/dashboard/index.html"}>dashboard</a></li>}
+					{signed && isAdmin && <li className="nav-item-button" onClick={()=>{clearField(4)}}><a className="nav-link" href={process.env.PUBLIC_URL+"/dashboard/index.html"}>dashboard</a></li>}
 					<li className="nav-item" onClick={()=>{clearField(0)}}><Link to="/" className="nav-link">HOME</Link></li>
 					<li className="nav-item" onClick={()=>{clearField(1)}}><Link to="/blog" className="nav-link">BLOG ENTRIES</Link></li>
 					<li className="nav-item" onClick={()=>{clearField(2)}}><Link to="/post-details" className="nav-link">Post Details</Link></li>

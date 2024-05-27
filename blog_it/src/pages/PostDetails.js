@@ -10,9 +10,12 @@ function PostDetails() {
 		id: 1,
 		category: "lifestyle",
 		title: 'Donec tincidunt leo',
+		body: 'Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.',
+		author: 'Admin',
 		date: 'May 31, 2020',
 		comments: '12 Comments',
 		commentsCount: 12,
+		createdAt: '2020-05-31T00:00:00.000Z',
 		image: blogThumb1,
 		tags: ['Best Templates', 'TemplateMo'],
 		share: ['Facebook', 'Twitter', 'LinkedIn']

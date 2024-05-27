@@ -67,11 +67,11 @@ const MainBanner = () => {
                   <div className="meta-category">
                     <span>{item.category}</span>
                   </div>
-                  <a href="post-details.html"><h4>{item.title}</h4></a>
+                  <a href={process.env.PUBLIC_URL}><h4>{item.title}</h4></a>
                   <ul className="post-info">
-                    <li><a href="#">Admin</a></li>
-                    <li><a href="#">{item.date}</a></li>
-                    <li><a href="#">{item.comments}</a></li>
+                    <li><a href={process.env.PUBLIC_URL}>Admin</a></li>
+                    <li><a href={process.env.PUBLIC_URL}>{item.date}</a></li>
+                    <li><a href={process.env.PUBLIC_URL}>{item.comments}</a></li>
                   </ul>
                 </div>
               </div>

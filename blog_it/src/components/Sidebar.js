@@ -1,8 +1,38 @@
 import React from 'react';
 import Categories from './Categories';
 import TagsSidebarItem from './Tags';
+import { useState, useEffect } from 'react';
 
 function Sidebar() {
+	const [blog, setBlog] = useState([]);
+	const fetchBlogs = () => {
+		fetch(process.env.REACT_APP_API + "/posts", {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+				"Authorization": `Bearer ${localStorage.getItem("accessToken")}`
+			}
+		})
+		.then(res => res.json())
+		.then(data => {
+			const posts = data.posts.map((post) => {
+				// convert format to yyyy-mm-dd
+				return {
+					title: post.title,
+					createdAt: new Date(post.createdAt).toISOString().split('T')[0]
+				}
+				
+			})
+			setBlog(posts.splice(data.posts.length - 4, data.posts.length - 1));
+			console.log(posts)
+		})
+		.catch(err => {
+			console.log(err);
+		})
+	}
+	useEffect(() => {
+		fetchBlogs();
+	}, [])
 	return (
 		<div className="col-lg-4">
 		<div className="sidebar">
@@ -21,18 +51,19 @@ function Sidebar() {
 				</div>
 				<div className="content">
 				  <ul>
-					<li><a href="post-details.html">
-					  <h5>Vestibulum id turpis porttitor sapien facilisis scelerisque</h5>
-					  <span>May 31, 2020</span>
-					</a></li>
-					<li><a href="post-details.html">
-					  <h5>Vestibulum id turpis porttitor sapien facilisis scelerisque</h5>
-					  <span>May 31, 2020</span>
-					</a></li>
-					<li><a href="post-details.html">
-					  <h5>Vestibulum id turpis porttitor sapien facilisis scelerisque</h5>
-					  <span>May 31, 2020</span>
-					</a></li>
+					{
+						blog.length > 0 &&
+						blog.map((post) => {
+							return (
+								<li>
+									<a href="post-details.html">
+										<h5>{post.title}</h5>
+										<span>{post.createdAt}</span>
+									</a>
+								</li>
+							)
+						})
+					}
 				  </ul>
 				</div>
 			  </div>

@@ -8,13 +8,13 @@ const TagsSidebarItem = () => {
       </div>
       <div className="content">
         <ul>
-          <li><a href="#">Lifestyle</a></li>
-          <li><a href="#">Creative</a></li>
-          <li><a href="#">HTML5</a></li>
-          <li><a href="#">Inspiration</a></li>
-          <li><a href="#">Motivation</a></li>
-          <li><a href="#">PSD</a></li>
-          <li><a href="#">Responsive</a></li>
+          <li><a href={process.env.PUBLIC_URL}>Lifestyle</a></li>
+          <li><a href={process.env.PUBLIC_URL}>Creative</a></li>
+          <li><a href={process.env.PUBLIC_URL}>HTML5</a></li>
+          <li><a href={process.env.PUBLIC_URL}>Inspiration</a></li>
+          <li><a href={process.env.PUBLIC_URL}>Motivation</a></li>
+          <li><a href={process.env.PUBLIC_URL}>PSD</a></li>
+          <li><a href={process.env.PUBLIC_URL}>Responsive</a></li>
         </ul>
       </div>
     </div>

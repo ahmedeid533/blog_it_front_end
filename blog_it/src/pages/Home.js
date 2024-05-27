@@ -7,17 +7,6 @@ import blogThumb1 from '../assets/images/blog-thumb-01.jpg';
 
 function Home() {
 	const [blog, setBlog] = useState([]);
-	const post = {
-		id: 1,
-		category: "lifestyle",
-		title: 'Donec tincidunt leo',
-		date: 'May 31, 2020',
-		comments: '12 Comments',
-		commentsCount: 12,
-		image: blogThumb1,
-		tags: ['Best Templates', 'TemplateMo'],
-		share: ['Facebook', 'Twitter', 'LinkedIn']
-	}
 	const fetchBlogs = () => {
 		fetch(process.env.REACT_APP_API + "/posts", {
 			method: "GET",
@@ -34,7 +23,7 @@ function Home() {
 				post.share = ['Facebook', 'Twitter', 'LinkedIn'];
 				return post;
 			})
-			setBlog(data.posts.splice(3, 6));
+			setBlog(data.posts.splice(data.posts.length - 4, data.posts.length - 1));
 			console.log(data.posts)
 		})
 		.catch(err => {
