@@ -13,9 +13,9 @@ function getCookie(cname) {
 	}
 	return false;
   }
-const refresh = setInterval(() => {
+const refresh = () => {
 	if(getCookie("jwt")) {
-		fetch(process.env.REACT_APP_API + "/auth/refresh", {
+		fetch("https://blog-it-zjku.onrender.com" + "/auth/refresh", {
 			credentials: 'include',
 			headers: {
 				"Content-Type": "application/json"
@@ -29,22 +29,8 @@ const refresh = setInterval(() => {
 		window.location.href = "/login";
 		clearInterval(refresh);
 	}
-}, 1000 * 60 * 15);
-if(getCookie("jwt")) {
-	fetch(process.env.REACT_APP_API + "/auth/refresh", {
-		credentials: 'include',
-		headers: {
-			"Content-Type": "application/json"
-		},
-	})
-	.then(res => res.json())
-	.then(data => {
-		localStorage.setItem("accessToken", data.accessToken);
-	})
-} else {
-	window.location.href = "/login";
-	clearInterval(refresh);
 }
+setInterval(refresh, 1000 * 60 * 15);
 function getUsers() {
 	const user_ = document.createElement('tr')
 user_.innerHTML = `
@@ -85,7 +71,7 @@ function createUser(user,user_) {
 	const date = new Date(user.joinedAt);
 	userElement.querySelector('#date').textContent = user.joinedAt ? `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}` : 'No date';
 	userElement.querySelector('#delete').addEventListener('click', () => {
-		fetch(process.env.REACT_APP_API + `/users/${user._id}`, {
+		fetch("https://blog-it-zjku.onrender.com" + `/users/${user._id}`, {
 			method: 'DELETE',
 			credentials: 'include',
 			headers: {
@@ -101,7 +87,7 @@ function createUser(user,user_) {
 	return userElement;
 }
 
-fetch(process.env.REACT_APP_API + "/users", {
+fetch("https://blog-it-zjku.onrender.com" + "/users", {
 	method: 'GET',
 	headers: {
 		'Content-Type': 'application/json',
