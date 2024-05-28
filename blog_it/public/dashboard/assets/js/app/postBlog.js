@@ -1,5 +1,5 @@
 function postData () {
-	fetch("https://blog-it-zjku.onrender.com" + "/posts", {
+	fetch("https://blog-it-zjku.onrender.com" + "/posts/create", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -7,9 +7,11 @@ function postData () {
 		},
 		body: JSON.stringify({
 			title: document.getElementById("post_title").value,
-			author: document.getElementById("auther_id").value,
 			body: document.getElementById("postText").value,
 			categories: document.getElementById("category").value,
-		})
+		}),
+		file: {
+			filename: document.getElementById("imageUrl").value
+		},
 	})
 }

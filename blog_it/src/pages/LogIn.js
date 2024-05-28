@@ -25,6 +25,8 @@ function Login() {
 		if(data.accessToken){
 			localStorage.setItem("accessToken", data.accessToken);
 			localStorage.setItem("isAdmin", data.isAdmin);
+			let nowTime = new Date().getTime();
+			localStorage.setItem("setupTimeToken", nowTime);
 			if (data.isAdmin) {
 				window.location.href = "/blogit/dashboard/index.html";
 			} else {

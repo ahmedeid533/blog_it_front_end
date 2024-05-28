@@ -1,7 +1,7 @@
 import React from 'react';
 import Categories from './Categories';
-import TagsSidebarItem from './Tags';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function Sidebar() {
 	const [blog, setBlog] = useState([]);
@@ -18,13 +18,13 @@ function Sidebar() {
 			const posts = data.posts.map((post) => {
 				// convert format to yyyy-mm-dd
 				return {
+					_id: post._id,
 					title: post.title,
 					createdAt: new Date(post.createdAt).toISOString().split('T')[0]
 				}
 				
 			})
 			setBlog(posts.splice(data.posts.length - 4, data.posts.length - 1));
-			console.log(posts)
 		})
 		.catch(err => {
 			console.log(err);
@@ -57,7 +57,7 @@ function Sidebar() {
 							return (
 								<li>
 									<a href="post-details.html">
-										<h5>{post.title}</h5>
+										<Link to={"/post-details/"+post._id}><h5>{post.title}</h5></Link>
 										<span>{post.createdAt}</span>
 									</a>
 								</li>
@@ -69,7 +69,6 @@ function Sidebar() {
 			  </div>
 			</div>
 			<Categories/>
-			<TagsSidebarItem/>
 		  </div>
 		</div>
 	  </div>

@@ -1,6 +1,5 @@
 import React from "react";
-
-
+import { Link } from "react-router-dom";
 
 
 function BlogPost (props) {
@@ -16,7 +15,7 @@ function BlogPost (props) {
 				</div>
 				<div className="down-content">
 				<span>Lifestyle</span>
-				<a href={process.env.PUBLIC_URL}><h4>{post.title}</h4></a>
+				<Link to={"post-details/"+post._id}><h4>{post.title}</h4></Link>
 				<ul className="post-info">
 					<li><a href={process.env.PUBLIC_URL}>Admin</a></li>
 					<li><a href={process.env.PUBLIC_URL}>{date}</a></li>

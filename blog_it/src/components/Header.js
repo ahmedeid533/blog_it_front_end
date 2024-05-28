@@ -6,11 +6,10 @@ function Header() {
 	const [signed, setsigned] = useState(false);
 	const [isAdmin, setIsAdmin] = useState(false);
 	const clearField = (index) => {
-		console.log('clearField', index);
-		for (let i = 0; i < 3; i++) {
+		for (let i = 0; i < 2; i++) {
 			document.getElementsByClassName('nav-item')[i].classList.remove('active');
 		}
-		if (index === 4) {
+		if (index === 3) {
 			return;
 		}
 		document.getElementsByClassName('nav-item')[index].classList.add('active');
@@ -30,7 +29,7 @@ function Header() {
 
 	const logout = () => {
 		localStorage.removeItem('accessToken');
-		fetch('http://localhost:5000/auth/logout', {
+		fetch(process.env.REACT_APP_API + '/auth/logout', {
 			method: 'POST',
 			credentials: 'include',
 			headers: {
@@ -53,11 +52,10 @@ function Header() {
 				</button>
 				<div className="collapse navbar-collapse" id="navbarResponsive">
 				<ul className="navbar-nav ml-auto">
-					{signed && isAdmin && <li className="nav-item-button" onClick={()=>{clearField(4)}}><a className="nav-link" href={process.env.PUBLIC_URL+"/dashboard/index.html"}>dashboard</a></li>}
+					{signed && isAdmin && <li className="nav-item-button" onClick={()=>{clearField(3)}}><a className="nav-link" href={process.env.PUBLIC_URL+"/dashboard/index.html"}>dashboard</a></li>}
 					<li className="nav-item" onClick={()=>{clearField(0)}}><Link to="/" className="nav-link">HOME</Link></li>
 					<li className="nav-item" onClick={()=>{clearField(1)}}><Link to="/blog" className="nav-link">BLOG ENTRIES</Link></li>
-					<li className="nav-item" onClick={()=>{clearField(2)}}><Link to="/post-details" className="nav-link">Post Details</Link></li>
-					{!signed && <li className="nav-item-button" onClick={()=>{clearField(4)}}><Link to="/signup" className="nav-link">Signup / login</Link></li>}
+					{!signed && <li className="nav-item-button" onClick={()=>{clearField(3)}}><Link to="/signup" className="nav-link">Signup / login</Link></li>}
 					{signed && <li className="nav-item-button" onClick={()=>{logout()}}><Link to="/" className="nav-link">Logout</Link></li>}
 				</ul>
 				</div>
