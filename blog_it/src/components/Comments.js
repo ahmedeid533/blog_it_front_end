@@ -56,6 +56,10 @@ function Comments(probs) {
 				{
 					comments &&
 					comments.map((comment, index) => {
+						if (!comment.createdAt) {
+							comment.author = "Anonymus";
+							return
+						}
 						return (
 							<li key={index}>
 								<div className="author-thumb">
