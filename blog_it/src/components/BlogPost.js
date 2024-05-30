@@ -11,7 +11,7 @@ function BlogPost (props) {
 		<div className="col-lg-6" key={post.id}>
 			<div className="blog-post">
 				<div className="blog-thumb">
-				<img src={post.image} alt="" />
+				<img src={post.fileUrl ? post.fileUrl:post.image} alt="" />
 				</div>
 				<div className="down-content">
 				<span>Lifestyle</span>

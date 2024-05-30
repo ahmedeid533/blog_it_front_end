@@ -54,7 +54,6 @@ function Comments(probs) {
 			<ul>
 				{
 					comments &&
-					comments.length > 0 &&
 					comments.map((comment, index) => {
 						return (
 							<li key={index}>
@@ -62,7 +61,7 @@ function Comments(probs) {
 									<img src={process.env.PUBLIC_URL + `/assets/images/comment-author-0${index%2 + 1}.jpg`} alt="" />
 								</div>
 								<div className="right-content">
-									<h4>{comment.author}<span>{comment.createdAt}</span></h4>
+									<h4>{comment.author}<span>{comment.createdAt.split("T")[0]}</span></h4>
 									<p>{comment.body}</p>
 								</div>
 							</li>
@@ -70,7 +69,7 @@ function Comments(probs) {
 					})
 				
 				}{
-					!comments && comments.length > 0 && 
+					!comments  && 
 					<li >
 						<div className="author-thumb">
 							<img alt="" />

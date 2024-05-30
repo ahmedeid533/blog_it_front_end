@@ -10,17 +10,16 @@ const images = [blogThumb1, blogThumb2, blogThumb3,];
 function BlogPostEntry(props) {
 	const post = props.post;
 	let date = new Date(post.createdAt);
-	// fetch author name
-	
+	console.log(post)
 	// convert date to form "yyyy-mm-dd"
 	date = date.toISOString().split('T')[0];
 	return (
 		<div className="blog-post">
 			<div className="blog-thumb">
 				<img 
-					src={ post.image ? post.image : images[Math.floor(Math.random() * images.length)]}
+					src={ post.fileUrl ? post.fileUrl : images[Math.floor(Math.random() * images.length)]}
 					alt=""
-					style={{ height: "50vmin", objectFit: "contain", objectPosition: "center",width: "100%",}}
+					style={{ height: "50vmin", objectFit: "cover", objectPosition: "center",width: "100%",}}
 				/>
 			</div>
 			<div className="down-content">
