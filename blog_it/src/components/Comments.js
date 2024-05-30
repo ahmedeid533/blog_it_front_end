@@ -19,10 +19,31 @@ function Comments(probs) {
 			console.log(err);
 		})
 	}
+
+	const [comment, setComment] = useState("");
+	const sendComment = () => {
+		fetch(process.env.REACT_APP_API + "/comments/create", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				"Authorization": `Bearer ${localStorage.getItem("accessToken")}`
+			},
+			body: JSON.stringify({
+				body: comment,
+				post: id
+			})
+		})
+		.then(res => res.json())
+		.then(data => {
+			fetchComments();
+		})
+		.catch(err => {
+			console.log(err);
+		})
+	}
 	useEffect(() => {
 		fetchComments();
 	}, [])
-
 	return (
 		<div className="sidebar-item comments">
 			<div className="sidebar-heading">
@@ -56,8 +77,15 @@ function Comments(probs) {
 					})
 				
 				}
-				{/* Add more comments here */}
 			</ul>
+			<div>
+				<input 
+					type="text"
+					placeholder="yout comment" 
+					onChange={(e) => setComment(e.target.value)}
+				/>
+				<button onClick={sendComment}>Post Comment</button>
+			</div>
 			</div>
 		</div>
 	)

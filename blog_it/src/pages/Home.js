@@ -18,7 +18,9 @@ function Home() {
 		.then(res => res.json())
 		.then(data => {
 			data.posts.map((post) => {
-				post.image = blogThumb1;
+				post.image = post.fileUrl ?
+							 post.fileUrl :
+							 `../assets/images/blog-thumb-0${Math.floor(Math.random * 6)}.jpg`;
 				post.tags = ['Best Templates', 'TemplateMo'];
 				post.share = ['Facebook', 'Twitter', 'LinkedIn'];
 				return post;
