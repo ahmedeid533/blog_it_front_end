@@ -60,7 +60,7 @@ function PostDetails() {
 						<div className="col-lg-12">
 						{
 							post && post.title &&
-							<BlogPostEntry post={post}/>
+							<BlogPostEntry post={post} page={"page"}/>
 						}
 						</div>
 						<Comments id={id} />

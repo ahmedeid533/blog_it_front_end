@@ -9,6 +9,7 @@ const images = [blogThumb1, blogThumb2, blogThumb3,];
 
 function BlogPostEntry(props) {
 	const post = props.post;
+	const page = props.page;
 	let date = new Date(post.createdAt);
 	console.log(post)
 	// convert date to form "yyyy-mm-dd"
@@ -22,7 +23,7 @@ function BlogPostEntry(props) {
 					style={{ height: "50vmin", objectFit: "cover", objectPosition: "center",width: "100%",}}
 				/>
 			</div>
-			<div className="down-content">
+			<div className={"down-content"+" "+ page}>
 				<span>{post.category}</span>
 				<Link to={"/post-details/"+post._id}><h4>{post.title}</h4></Link>
 				<ul className="post-info">
