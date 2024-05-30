@@ -3,8 +3,11 @@ import { useState } from 'react';
 import HomeBanner from '../components/HomeBanner';
 import BlogPostEntry from '../components/BlogPostEntry';
 import Sidebar from '../components/Sidebar';
-import blogThumb1 from '../assets/images/blog-thumb-01.jpg';
+import blogThumb1 from '../assets/images/blog-post-01.jpg';
+import blogThumb2 from '../assets/images/blog-post-02.jpg';
+import blogThumb3 from '../assets/images/blog-post-03.jpg';
 
+const images = [blogThumb1, blogThumb2, blogThumb3,];
 function Home() {
 	const [blog, setBlog] = useState([]);
 	const fetchBlogs = () => {
@@ -20,13 +23,12 @@ function Home() {
 			data.posts.map((post) => {
 				post.image = post.fileUrl ?
 							 post.fileUrl :
-							 `../assets/images/blog-thumb-0${Math.floor(Math.random * 6)}.jpg`;
+							 images[Math.floor(Math.random() * images.length)]
 				post.tags = ['Best Templates', 'TemplateMo'];
 				post.share = ['Facebook', 'Twitter', 'LinkedIn'];
 				return post;
 			})
 			setBlog(data.posts.splice(data.posts.length - 4, data.posts.length - 1));
-			console.log(data.posts)
 		})
 		.catch(err => {
 			console.log(err);

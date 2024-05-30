@@ -10,6 +10,8 @@ const images = [blogThumb1, blogThumb2, blogThumb3,];
 function BlogPostEntry(props) {
 	const post = props.post;
 	let date = new Date(post.createdAt);
+	// fetch author name
+	
 	// convert date to form "yyyy-mm-dd"
 	date = date.toISOString().split('T')[0];
 	return (
@@ -25,7 +27,7 @@ function BlogPostEntry(props) {
 				<span>{post.category}</span>
 				<Link to={"/post-details/"+post._id}><h4>{post.title}</h4></Link>
 				<ul className="post-info">
-					<li><a href="https://">{post.author}</a></li>
+					<li><a href="https://">Admin</a></li>
 					<li><a href="https://">{date}</a></li>
 					<li><a href="https://">{post.commentsCount ? post.commentsCount : 0}</a></li>
 				</ul>

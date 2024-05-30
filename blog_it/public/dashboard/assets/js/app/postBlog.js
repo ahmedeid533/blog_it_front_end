@@ -12,10 +12,18 @@ function postData () {
 			fileUrl: document.getElementById("imageUrl").value
 		}),
 	})
+	.then(res => res.json())
+	.then(data => {
+		document.getElementById("massage").value = data.message;
+	})
 }
 let categories = [];
+let select = document.getElementById("category");
+let categorie = document.createElement("option");
+let catgs = []
+console.log("categories");
 const fetchCategories = () => {
-	fetch(process.env.REACT_APP_API + "/categories", {
+	fetch("https://blog-it-zjku.onrender.com" + "/categories", {
 		method: "GET",
 		headers: {
 			"Content-Type": "application/json",
@@ -24,19 +32,25 @@ const fetchCategories = () => {
 	.then(res => res.json())
 	.then(data => {
 		categories = data.categories;
+		console.log(categories);
+	})
+	.then(() => {
+		catgs = categories.map((category) => {
+			categorie = document.createElement("option");
+			categorie.value = category._id;
+			categorie.innerHTML = category.name;
+			return categorie;
+		})
+		console.log(catgs);
+	})
+	.then(() => {
+		catgs.map((categorie) => {
+			select.appendChild(categorie);
+		})
+		console.log(select);
 	})
 	.catch(err => {
 		console.log(err);
 	})
 }
 fetchCategories();
-let select = document.getElementById("category");
-let category = document.createElement("option");
-let catgs = categories.map((category) => {
-	category.value = category._id;
-	category.innerHTML = category.name;
-	return category;
-})
-catgs.forEach((category) => {
-	select.appendChild(category);
-})

@@ -7,12 +7,17 @@ import BlogPostEntry from '../components/BlogPostEntry';
 import { useParams } from 'react-router-dom';
 function PostDetails() {
 	const [post, setPost] = useState({});
+	
 	const id = useParams().id;
 	// const post = {
 	// 	id: 1,
 	// 	category: "lifestyle",
 	// 	title: 'Donec tincidunt leo',
-	// 	body: 'Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.',
+	// 	body: 'Nam eget dui. Etiam rhoncus. Maecenas tempus,
+	//  tellus eget condimentum rhoncus, sem quam semper libero,
+	//  sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel,
+	//  luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. 
+	//  Donec vitae sapien ut libero venenatis faucibus.',
 	// 	author: 'Admin',
 	// 	date: 'May 31, 2020',
 	// 	comments: '12 Comments',
@@ -32,16 +37,16 @@ function PostDetails() {
 		.then(res => res.json())
 		.then(data => {
 			setPost(data.post);
-			console.log(data.post);
 		})
 		.catch(err => {
 			console.log(err);
 		})
 	}
-
+	
+	
 	useEffect(() => {
 		fetchPost();
-	}, [])
+	}, [id])
 
 	return (
 		<div className="post-details">
@@ -58,7 +63,7 @@ function PostDetails() {
 							<BlogPostEntry post={post}/>
 						}
 						</div>
-						<Comments id={id}/>
+						<Comments id={id} />
 					</div>
 					</div>
 				</div>

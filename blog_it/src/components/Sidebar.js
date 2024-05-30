@@ -53,9 +53,9 @@ function Sidebar() {
 				  <ul>
 					{
 						blog.length > 0 &&
-						blog.map((post) => {
+						blog.map((post, idx) => {
 							return (
-								<li>
+								<li key={idx}>
 									<a href="post-details.html">
 										<Link to={"/post-details/"+post._id}><h5>{post.title}</h5></Link>
 										<span>{post.createdAt}</span>
