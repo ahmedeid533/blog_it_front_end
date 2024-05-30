@@ -88,13 +88,12 @@ function Comments(probs) {
 			<div>
 				<input 
 					type="text"
-					placeholder="yout comment"
+					placeholder="add your comment"
 					style={{width:"100%",padding:"1vmin 2vmin", fontSize:"1vmax",
 						borderColor:"#f48840",
 						borderWidth:"2px",
 						boxShadow:'none',
 						borderStyle:"solid"
-
 					}}
 					onChange={(e) => setComment(e.target.value)}
 				/>
