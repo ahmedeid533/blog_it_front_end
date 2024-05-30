@@ -57,7 +57,6 @@ function Comments(probs) {
 					comments &&
 					comments.map((comment, index) => {
 						if (!comment.createdAt) {
-							comment.author = "Anonymus";
 							return <li>{JSON.stringify(comment)}</li>
 						}
 						return (
