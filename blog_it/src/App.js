@@ -80,12 +80,13 @@ function App() {
         <Header />
         <Routes>
 		  <Route path="*" element={<Home/>} />
-          <Route path="/" index exact element={<Home/>} />
-          <Route path="/blog/:id" element={<Blog/>} />
-		  <Route path="/blog" element={<Blog/>} />
-		  <Route path="/post-details/:id" element={<PostDetails/>} />
-		  <Route path="/login" element={<Login/>} />
-		  <Route path="/signup" element={<SignUp/>} />
+          <Route path="/" index exact element={<Home/>} >
+			<Route path="/blog/:id" element={<Blog/>} />
+			<Route path="/blog" element={<Blog/>} />
+			<Route path="/post-details/:id" element={<PostDetails/>} />
+			<Route path="/login" element={<Login/>} />
+			<Route path="/signup" element={<SignUp/>} />
+		  </Route>
         </Routes>
         <Footer />
     </Router>
