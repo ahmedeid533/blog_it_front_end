@@ -57,7 +57,7 @@ function Comments(probs) {
 					comments &&
 					comments.map((comment, index) => {
 						if (!comment.createdAt) {
-							return <ul><li>{JSON.stringify(comment)}</li></ul>
+							return <ul><li key={index}>{JSON.stringify(comment)}</li></ul>
 						}
 						return (
 							<ul>

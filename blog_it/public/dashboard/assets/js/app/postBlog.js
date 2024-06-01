@@ -9,7 +9,8 @@ function postData () {
 			title: document.getElementById("post_title").value,
 			body: document.getElementById("postText").value,
 			categories: document.getElementById("category").value,
-			fileUrl: document.getElementById("imageUrl").value
+			fileUrl: document.getElementById("imageUrl").value,
+			
 		}),
 	})
 	.then(res => res.json())
