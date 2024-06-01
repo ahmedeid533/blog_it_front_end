@@ -47,6 +47,7 @@
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none; }
   .owl-carousel .owl-item img {
+	aspect-ratio: 2/1;
     display: block;
     width: 100%; }
   .owl-carousel .owl-nav.disabled,
