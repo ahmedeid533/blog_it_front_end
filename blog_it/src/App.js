@@ -7,7 +7,7 @@ import Blog from './pages/Blog';
 import PostDetails from './pages/PostDetails';
 import Login from './pages/LogIn';
 import SignUp from './pages/SignUp';
-import { Layout } from './pages/layout';
+import Layout from './pages/layout';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
