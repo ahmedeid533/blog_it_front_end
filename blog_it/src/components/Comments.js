@@ -52,15 +52,16 @@ function Comments(probs) {
 			<h2>{comments? comments.length : 0} comments</h2>
 			</div>
 			<div className="content">
-			<ul>
+			
 				{
 					comments &&
 					comments.map((comment, index) => {
 						if (!comment.createdAt) {
-							return <li>{JSON.stringify(comment)}</li>
+							return <ul><li>{JSON.stringify(comment)}</li></ul>
 						}
 						return (
-							<li key={index}>
+							<ul>
+								<li key={index}>
 								<div className="author-thumb">
 									<img src={process.env.PUBLIC_URL + `/assets/images/comment-author-0${index%2 + 1}.jpg`} alt="fake image" />
 								</div>
@@ -69,11 +70,13 @@ function Comments(probs) {
 									<p>{comment.body}</p>
 								</div>
 							</li>
+							</ul>	
 						)
 					})
 				
 				}{
 					!comments  && 
+					<ul>
 					<li >
 						<div className="author-thumb">
 							<img alt="" />
@@ -83,8 +86,9 @@ function Comments(probs) {
 							<h3>or you have to log in to see comments</h3>
 						</div>
 					</li>
+					</ul>
 				}
-			</ul>
+			
 			<div>
 				<input 
 					type="text"
