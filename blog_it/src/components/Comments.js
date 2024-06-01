@@ -62,10 +62,10 @@ function Comments(probs) {
 						return (
 							<li key={index}>
 								<div className="author-thumb">
-									<img src={process.env.PUBLIC_URL + `/assets/images/comment-author-0${index%2 + 1}.jpg`} alt="" />
+									<img src={process.env.PUBLIC_URL + `/assets/images/comment-author-0${index%2 + 1}.jpg`} alt="fake image" />
 								</div>
 								<div className="right-content">
-									<h4>{comment.author}<span>{comment.createdAt.split("T")[0]}</span></h4>
+									<h4>{comment.username ? comment.username : "private"}<span>{comment.createdAt.split("T")[0]}</span></h4>
 									<p>{comment.body}</p>
 								</div>
 							</li>

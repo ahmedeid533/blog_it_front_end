@@ -24,7 +24,7 @@ function BlogPostEntry(props) {
 				/>
 			</div>
 			<div className={"down-content"+" "+ page}>
-				<span>{post.category}</span>
+				<span>{post.categoryName ? post.categoryName : "general"}</span>
 				<Link to={"/post-details/"+post._id}><h4>{post.title}</h4></Link>
 				<ul className="post-info">
 					<li><a href="https://">Admin</a></li>

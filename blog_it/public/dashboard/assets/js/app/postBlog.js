@@ -14,7 +14,11 @@ function postData () {
 	})
 	.then(res => res.json())
 	.then(data => {
-		document.getElementById("massage").value = data.message;
+		document.getElementById("massage").value = "Post created successfully";
+		document.getElementById("post_title").value = ""
+		document.getElementById("postText").value = ""
+		document.getElementById("category").value = ""
+		document.getElementById("imageUrl").value = ""
 	})
 }
 let categories = [];
