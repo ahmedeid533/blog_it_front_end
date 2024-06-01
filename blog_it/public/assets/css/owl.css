@@ -47,7 +47,8 @@
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none; }
   .owl-carousel .owl-item img {
-	height: 15vh;
+	height: 40vmin;
+	object-fit: cover;
     display: block;
     width: 100%; }
   .owl-carousel .owl-nav.disabled,

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 function Comments(probs) {
 	const id = probs.id;
 	const [comments, setComments] = useState([]);
+	const [message, setMessage] = useState("");
 	const fetchComments = () => {
 		fetch(process.env.REACT_APP_API + "/comments/post/" + id, {
 			method: "GET",
@@ -36,8 +37,8 @@ function Comments(probs) {
 		})
 		.then(res => res.json())
 		.then(data => {
-			console.log(data);
-			window.location.reload();
+			setMessage(data.message)
+			fetchComments()
 		})
 		.catch(err => {
 			console.log(err);
@@ -106,6 +107,7 @@ function Comments(probs) {
 				style={{color:"black",margin:"1vmax", marginLeft:0}}
 				 onClick={sendComment}>Post Comment</button>
 			</div>
+			<h1>{message}</h1>
 			</div>
 		</div>
 	)
