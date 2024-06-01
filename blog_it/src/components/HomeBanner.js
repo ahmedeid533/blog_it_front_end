@@ -1,7 +1,9 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
+import { Link } from 'react-router-dom';
+
 import bannerItem1 from '../assets/images/banner-item-01.jpg';
 import bannerItem2 from '../assets/images/banner-item-02.jpg';
 import bannerItem3 from '../assets/images/banner-item-03.jpg';
@@ -99,9 +101,9 @@ const MainBanner = () => {
               <div className="item-content">
                 <div className="main-content">
                   <div className="meta-category">
-                    <span>{post.categoryName ? post.categoryName : "general"}</span>
+                    <span>{item.categoryName ? item.categoryName : "general"}</span>
                   </div>
-                  <Link to={"/post-details/"+post._id}><h4>{item.title}</h4></Link>
+                  <Link to={"/post-details/"+item._id}><h4>{item.title}</h4></Link>
                   <ul className="post-info">
                     <li onClick={(e)=>{e.preventDefault()}}><a href={process.env.PUBLIC_URL}>Admin</a></li>
                     <li onClick={(e)=>{e.preventDefault()}}><a href={process.env.PUBLIC_URL}>{item.createdAt.split("T")[0]}</a></li>

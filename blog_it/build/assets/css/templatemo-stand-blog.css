@@ -492,8 +492,12 @@ header .navbar {
 	margin: 25px 0px;
 	border-top: 1px solid #eee;
 	border-bottom: 1px solid #eee;
+	max-height: 40vh;
+	overflow: hidden;
 }
-
+.blog-posts .down-content.page p {
+	max-height: none;
+}
 .blog-posts .down-content ul.post-share {
 	text-align: right;
 }
