@@ -15,7 +15,7 @@ function postData () {
 	})
 	.then(res => res.json())
 	.then(data => {
-		document.getElementById("message").value = "Post created successfully";
+		document.getElementById("message").innerHTML = "Post created successfully";
 		document.getElementById("post_title").value = ""
 		document.getElementById("postText").value = ""
 		document.getElementById("category").value = ""
