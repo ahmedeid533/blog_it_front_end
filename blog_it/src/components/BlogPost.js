@@ -14,7 +14,7 @@ function BlogPost (props) {
 				<img src={post.fileUrl ? post.fileUrl:post.image} alt="" />
 				</div>
 				<div className="down-content">
-				<span>Lifestyle</span>
+				<span>{post.categoryName ? post.categoryName : "general"}</span>
 				<Link to={"post-details/"+post._id}><h4>{post.title}</h4></Link>
 				<ul className="post-info">
 					<li><a href={process.env.PUBLIC_URL}>Admin</a></li>

@@ -9,6 +9,12 @@ import bannerItem4 from '../assets/images/banner-item-04.jpg';
 import bannerItem5 from '../assets/images/banner-item-05.jpg';
 import bannerItem6 from '../assets/images/banner-item-06.jpg';
 
+import blogThumb1 from '../assets/images/blog-post-01.jpg';
+import blogThumb2 from '../assets/images/blog-post-02.jpg';
+import blogThumb3 from '../assets/images/blog-post-03.jpg';
+
+const images = [blogThumb1, blogThumb2, blogThumb3,];
+
 const carouselItems = [
   {
     image: bannerItem1,
@@ -55,23 +61,50 @@ const carouselItems = [
 ];
 
 const MainBanner = () => {
+	const [blog, setBlog] = useState([]);
+	const fetchBlogs = () => {
+		fetch(process.env.REACT_APP_API + "/posts", {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json",
+				"Authorization": `Bearer ${localStorage.getItem("accessToken")}`
+			}
+		})
+		.then(res => res.json())
+		.then(data => {
+			data.posts.map((post) => {
+				post.image = post.fileUrl ?
+							 post.fileUrl :
+							 images[Math.floor(Math.random() * images.length)]
+				post.share = ['Facebook', 'Twitter', 'LinkedIn'];
+				return post;
+			})
+			const randstart = Math.floor(Math.random() * (data.posts.length - 7))
+			setBlog(data.posts.splice(randstart , randstart + 6));
+		})
+		.catch(err => {
+			console.log(err);
+		})
+	}
+	useEffect(() => {
+		fetchBlogs();
+	}, [])
   return (
     <div className="main-banner header-text">
       <div className="container-fluid">
         <OwlCarousel className="owl-banner owl-carousel" loop margin={10} nav>
-          {carouselItems.map((item, index) => (
+          {blog.map((item, index) => (
             <div className="item" key={index}>
               <img src={item.image} alt={item.title} />
               <div className="item-content">
                 <div className="main-content">
                   <div className="meta-category">
-                    <span>{item.category}</span>
+                    <span>{post.categoryName ? post.categoryName : "general"}</span>
                   </div>
-                  <a href={process.env.PUBLIC_URL}><h4>{item.title}</h4></a>
+                  <Link to={"/post-details/"+post._id}><h4>{item.title}</h4></Link>
                   <ul className="post-info">
-                    <li><a href={process.env.PUBLIC_URL}>Admin</a></li>
-                    <li><a href={process.env.PUBLIC_URL}>{item.date}</a></li>
-                    <li><a href={process.env.PUBLIC_URL}>{item.comments}</a></li>
+                    <li onClick={(e)=>{e.preventDefault()}}><a href={process.env.PUBLIC_URL}>Admin</a></li>
+                    <li onClick={(e)=>{e.preventDefault()}}><a href={process.env.PUBLIC_URL}>{item.createdAt.split("T")[0]}</a></li>
                   </ul>
                 </div>
               </div>

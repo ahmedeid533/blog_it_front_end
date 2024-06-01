@@ -7,6 +7,7 @@ import Blog from './pages/Blog';
 import PostDetails from './pages/PostDetails';
 import Login from './pages/LogIn';
 import SignUp from './pages/SignUp';
+import { Layout } from './pages/layout';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
@@ -80,13 +81,14 @@ function App() {
         <Header />
         <Routes>
 		  <Route path="*" element={<Home/>} />
-          <Route path="/" >
-			<Route path="/" index exact element={<Home/>}/>
+          <Route path="/" element={<Layout/>}>
+			<Route index element={<Home/>}/>
 			<Route path="/blog/:id" element={<Blog/>} />
 			<Route path="/blog" element={<Blog/>} />
 			<Route path="/post-details/:id" element={<PostDetails/>} />
 			<Route path="/login" element={<Login/>} />
 			<Route path="/signup" element={<SignUp/>} />
+			<Route path="*" element={<Home/>} />
 		  </Route>
         </Routes>
         <Footer />
