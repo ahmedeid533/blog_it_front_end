@@ -15,7 +15,7 @@ function BlogPost (props) {
 				</div>
 				<div className="down-content">
 				<span>{post.categoryName ? post.categoryName : "general"}</span>
-				<Link to={"post-details/"+post._id}><h4>{post.title}</h4></Link>
+				<Link to={"/post-details/"+post._id}><h4>{post.title}</h4></Link>
 				<ul className="post-info">
 					<li><a href={process.env.PUBLIC_URL}>Admin</a></li>
 					<li><a href={process.env.PUBLIC_URL}>{date}</a></li>

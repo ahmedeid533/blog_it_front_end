@@ -38,6 +38,10 @@ function Comments(probs) {
 		.then(res => res.json())
 		.then(data => {
 			setMessage(data.message)
+			setComment("")
+			setTimeout(() => {
+				setMessage("")
+			}, 3000)
 			fetchComments()
 		})
 		.catch(err => {
@@ -107,7 +111,7 @@ function Comments(probs) {
 				style={{color:"black",margin:"1vmax", marginLeft:0}}
 				 onClick={sendComment}>Post Comment</button>
 			</div>
-			<h1>{message}</h1>
+			<h4>{message}</h4>
 			</div>
 		</div>
 	)
