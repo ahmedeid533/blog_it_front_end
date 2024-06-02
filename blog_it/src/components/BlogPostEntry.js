@@ -29,7 +29,7 @@ function BlogPostEntry(props) {
 				<ul className="post-info">
 					<li><a href="https://">Admin</a></li>
 					<li><a href="https://">{date}</a></li>
-					<li><a href="https://">{post.commentsCount ? post.commentsCount : 0}</a></li>
+					<li><a href="https://">{post.comments ? post.comments.length : 0}</a></li>
 				</ul>
 				<p>{post.body}</p>
 			</div>
