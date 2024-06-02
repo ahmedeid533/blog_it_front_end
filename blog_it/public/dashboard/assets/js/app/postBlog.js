@@ -59,3 +59,23 @@ const fetchCategories = () => {
 	})
 }
 fetchCategories();
+
+const postCategory = () => {
+	fetch("https://blog-it-zjku.onrender.com" + "/categories/create", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+			"Authorization": `Bearer ${localStorage.getItem("accessToken")}`
+		},
+		body: JSON.stringify({
+			name: document.getElementById("post_title").value,
+			description: document.getElementById("postText").value,
+		}),
+	})
+	.then(res => res.json())
+	.then(data => {
+		document.getElementById("message").innerHTML = "Category created successfully";
+		document.getElementById("post_title").value = ""
+		document.getElementById("postText").value = ""
+	})
+}

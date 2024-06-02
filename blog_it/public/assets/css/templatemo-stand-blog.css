@@ -420,6 +420,8 @@ header .navbar {
 }
 
 .blog-posts .blog-thumb img {
+	height: 50vmin;
+	object-fit: cover;
 	width: 100%;
 	overflow: hidden;
 }
