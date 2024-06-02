@@ -42,6 +42,7 @@ function Comments(probs) {
 			document.getElementById('comment-input').value = ""
 			setTimeout(() => {
 				setMessage("")
+				document.getElementById('message').innerHTML = ""
 			}, 3000)
 			fetchComments()
 		})
@@ -113,7 +114,7 @@ function Comments(probs) {
 				style={{color:"black",margin:"1vmax", marginLeft:0}}
 				 onClick={sendComment}>Post Comment</button>
 			</div>
-			<h4>{message}</h4>
+			<h4 id='message'>{message}</h4>
 			</div>
 		</div>
 	)
