@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import commentImage from '../assets/images/profile_avatar.png';
+
 function Comments(probs) {
 	const id = probs.id;
 	const [comments, setComments] = useState([]);
@@ -72,7 +74,7 @@ function Comments(probs) {
 							<ul>
 								<li key={index}>
 								<div className="author-thumb">
-									<img src={process.env.PUBLIC_URL + `/assets/images/profile_avatar.png`} alt="profile image" />
+									<img src={commentImage} alt="profile image" />
 								</div>
 								<div className="right-content">
 									<h4>{comment.username ? comment.username : "private"}<span>{comment.createdAt.split("T")[0]}</span></h4>
