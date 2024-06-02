@@ -24,6 +24,7 @@ function Comments(probs) {
 
 	const [comment, setComment] = useState("");
 	const sendComment = () => {
+		document.getElementById('comment-button').disabled = true
 		fetch(process.env.REACT_APP_API + "/comments/create", {
 			method: "POST",
 			headers: {
@@ -43,6 +44,7 @@ function Comments(probs) {
 			setTimeout(() => {
 				setMessage("")
 				document.getElementById('message').innerHTML = ""
+				document.getElementById('comment-button').disabled = false
 			}, 3000)
 			fetchComments()
 		})
@@ -111,6 +113,7 @@ function Comments(probs) {
 				/>
 				<button 
 				className='nav-item-button'
+				id='comment-button'
 				style={{color:"black",margin:"1vmax", marginLeft:0}}
 				 onClick={sendComment}>Post Comment</button>
 			</div>
