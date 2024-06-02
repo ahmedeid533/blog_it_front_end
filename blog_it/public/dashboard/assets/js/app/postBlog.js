@@ -18,7 +18,6 @@ function postData () {
 		document.getElementById("message").innerHTML = "Post created successfully";
 		document.getElementById("post_title").value = ""
 		document.getElementById("postText").value = ""
-		document.getElementById("category").value = ""
 		document.getElementById("imageUrl").value = ""
 	})
 }
@@ -74,7 +73,10 @@ const postCategory = () => {
 	})
 	.then(res => res.json())
 	.then(data => {
-		document.getElementById("message").innerHTML = "Category created successfully";
+		document.getElementById("message").innerHTML = "Category created successfully"+JSON.stringify(data);
+		setTimeout(() => {
+			document.getElementById("message").innerHTML = "";
+		}, 3000);
 		document.getElementById("post_title").value = ""
 		document.getElementById("postText").value = ""
 	})
