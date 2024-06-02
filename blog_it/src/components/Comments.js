@@ -39,6 +39,7 @@ function Comments(probs) {
 		.then(data => {
 			setMessage(data.message)
 			setComment("")
+			document.getElementById('comment-input').value = ""
 			setTimeout(() => {
 				setMessage("")
 			}, 3000)
@@ -98,6 +99,7 @@ function Comments(probs) {
 				<input 
 					type="text"
 					placeholder="add your comment"
+					id='comment-input'
 					style={{width:"100%",padding:"1vmin 2vmin", fontSize:"1vmax",
 						borderColor:"#f48840",
 						borderWidth:"2px",
