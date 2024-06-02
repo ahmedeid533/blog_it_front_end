@@ -75,7 +75,7 @@ function Comments(probs) {
 								<li key={index}>
 								<div className="author-thumb">
 									{/* fixed image */}
-									<img src={user.profilePicture ? user.profilePicture:commentImage} alt="profile image" />
+									<img src={commentImage} alt="profile image" />
 								</div>
 								<div className="right-content">
 									<h4>{comment.username ? comment.username : "private"}<span>{comment.createdAt.split("T")[0]}</span></h4>
