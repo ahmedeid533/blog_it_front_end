@@ -108,17 +108,20 @@
                     <div class="row align-items-center">
                         <div class="col-8">
                             <h6 class="mb-0">add post </h6>
-							<h5 id="massage"></h5>
-
                         </div>
                         <div class="col-4 text-end">
                             <a href="#!" class="btn btn-sm bg-gradient-primary mb-0" onclick='postData()'>post</a>
+							<a href="#!" class="btn btn-sm bg-gradient-secondary mb-0" onclick='postCategory()'>create category</a>
                         </div>
+						<div class="col-12"> 
+							<h4> if you want to add category enter catgory name as post title and the descreption in blog content</h4>
+						</div>
                     </div>
                 </div>
                 <div class="card-body">
                     <form>
-                        <h6 class="heading-small text-muted mb-4">post meta data</h6>
+                        <h6 class="heading-small text-muted mb-4">post data</h6>
+						<h5 id="message" style="color: red;font-size: 2vmax;"></h5>
                         <div>
                             <div class="row">
                                 <div class="col-lg-12">
@@ -153,10 +156,10 @@
                         </div>
                         <hr class="horizontal dark my-4">
                         <!-- Description -->
-                        <h6 class="heading-small text-muted mb-4">add post</h6>
+                        <h6 class="heading-small text-muted mb-4">blog content</h6>
                         <div">
                             <div class="form-group">
-                                <label class="form-control-label">post</label>
+                                <label class="form-control-label">blog content</label>
                                 <textarea rows="4" class="form-control" id="postText" placeholder="blog content ...? blog it">add any content</textarea>
                             </div>
                         </div">
@@ -267,7 +270,7 @@
                 },
               },
             });
-        
+
            };
            if (document.querySelector("#chart-line")) {
            	var ctx2 = document.getElementById("chart-line").getContext("2d");
@@ -294,7 +297,7 @@
                     fill: true,
                     data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
                     maxBarThickness: 6
-        
+
                   },
                   {
                     label: "Websites",
@@ -365,7 +368,7 @@
                   },
                 },
               },
-            }); 
+            });
            };
     </script>
     <script src="../assets/js/app/postBlog.js"></script>

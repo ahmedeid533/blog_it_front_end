@@ -9,15 +9,15 @@ function postData () {
 			title: document.getElementById("post_title").value,
 			body: document.getElementById("postText").value,
 			categories: document.getElementById("category").value,
-			fileUrl: document.getElementById("imageUrl").value
+			fileUrl: document.getElementById("imageUrl").value,
+			
 		}),
 	})
 	.then(res => res.json())
 	.then(data => {
-		document.getElementById("massage").value = "Post created successfully";
+		document.getElementById("message").innerHTML = "Post created successfully";
 		document.getElementById("post_title").value = ""
 		document.getElementById("postText").value = ""
-		document.getElementById("category").value = ""
 		document.getElementById("imageUrl").value = ""
 	})
 }
@@ -58,3 +58,26 @@ const fetchCategories = () => {
 	})
 }
 fetchCategories();
+
+const postCategory = () => {
+	fetch("https://blog-it-zjku.onrender.com" + "/categories/create", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+			"Authorization": `Bearer ${localStorage.getItem("accessToken")}`
+		},
+		body: JSON.stringify({
+			name: document.getElementById("post_title").value,
+			description: document.getElementById("postText").value,
+		}),
+	})
+	.then(res => res.json())
+	.then(data => {
+		document.getElementById("message").innerHTML = "Category created successfully"+JSON.stringify(data);
+		setTimeout(() => {
+			document.getElementById("message").innerHTML = "";
+		}, 3000);
+		document.getElementById("post_title").value = ""
+		document.getElementById("postText").value = ""
+	})
+}
