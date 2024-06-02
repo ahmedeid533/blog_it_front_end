@@ -74,6 +74,7 @@ function Comments(probs) {
 							<ul>
 								<li key={index}>
 								<div className="author-thumb">
+									{/* fixed image */}
 									<img src={commentImage} alt="profile image" />
 								</div>
 								<div className="right-content">
