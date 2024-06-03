@@ -12,7 +12,12 @@ const fetchPosts = async () => {
 	if(data.error){
 		console.log(data.error);
 	} else {
-		document.getElementById("postsCount").innerHTML = data.length;
+		document.getElementById("postsCount").innerHTML = data.posts.length;
+		const newPosts = data.posts.filter(post => post.createdAt > new Date().getTime() - 86400000);
+		if (newPosts.length !== null) {
+			const newPerOld = newPosts.length / data.posts.length * 100;
+			document.getElementById("newPostsPerOld").innerHTML = "+" + newPerOld.toFixed(2) + "%";
+		}
 	}
 }
 fetchPosts();
@@ -23,7 +28,7 @@ const fetchUsers = async () => {
 		credentials: 'include',
 		headers: {
 			"Content-Type": "application/json",
-			"Autorization": "Bearer " + localStorage.getItem("accessToken")
+			"Authorization": "Bearer " + localStorage.getItem("accessToken")
 		}
 	})
 	.catch(e => console.log(e))
@@ -33,9 +38,14 @@ const fetchUsers = async () => {
 	} else {
 		document.getElementById("usersCount").innerHTML = data.length;
 		const newUsers = data.filter(user => user.createdAt > new Date().getTime() - 86400000);
-		document.getElementById("newUsersCount").innerHTML = newUsers.length;
-		const newPerOld = newUsers.length / data.length * 100;
-		document.getElementById("newPerOld").innerHTML = "+" + newPerOld.toFixed(2) + "%";
+		if (newUsers.length === null) {
+			document.getElementById("newUsers").innerHTML = 0;
+		} else {
+			document.getElementById("newUsers").innerHTML = newUsers.length;
+			const newPerOld = newUsers.length / data.length * 100;
+			document.getElementById("newPerOld").innerHTML = "+" + newPerOld.toFixed(2) + "%";
+		}
+		
 	}
 }
 fetchUsers();
@@ -54,7 +64,12 @@ const fetchComments = async () => {
 	if(data.error){
 		console.log(data.error);
 	} else {
-		document.getElementById("commentsCount").innerHTML = data.length;
+		document.getElementById("commentsCount").innerHTML = data.comments.length;
+		const newComments = data.comments.filter(comment => comment.createdAt > new Date().getTime() - 86400000);
+		if (newComments.length !== null) {
+			const newPerOld = newComments.length / data.comments.length * 100;
+			document.getElementById("newCommentsPerOld").innerHTML = "+" + newPerOld.toFixed(2) + "%";
+		}
 	}
 }
 fetchComments();
