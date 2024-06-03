@@ -61,10 +61,12 @@ function Login() {
 								id="exampleInputPassword1"
 								onChange={(e) => {
 									setPassword(e.target.value)
-									if (7 >= e.target.value.length) {
+									if (7 > e.target.value.length) {
 										setError("Password is too short")
+										document.getElementById("submit").disabled = true;
 									} else {
 										setError("");
+										document.getElementById("submit").disabled = false;
 									}
 								}}
 							/>
@@ -72,6 +74,7 @@ function Login() {
 						</div>
 						<button type="submit"
 							className="btn btn-primary"
+							id="submit"
 							onClick={handleSubmit}
 						>Submit</button>
 					</div>
