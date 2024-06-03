@@ -124,7 +124,7 @@ function BlogPosts () {
 						}}><i>{page + 2}</i></li>
 					}
 					{
-						(page ) * 4 <= posts.length
+						(page) * 4 < posts.length
 						&& <li onClick={() => {
 							setPage(page + 1)
 						}}><i>{">"}</i></li>
