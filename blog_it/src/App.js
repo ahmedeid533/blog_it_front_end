@@ -30,6 +30,9 @@ function refresh (){
 		})
 		.catch(err => {
 			console.log(err);
+			alert("Something went wrong, please try to log in again");
+			localStorage.removeItem("accessToken");
+			Link.to("/login");
 		})
 	} else {
 		return;

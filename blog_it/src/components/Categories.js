@@ -27,14 +27,25 @@ const Categories = () => {
       <div className="sidebar-heading">
         <h2>Categories</h2>
       </div>
-      <div className="content">
-        <ul>
+      <div className="content" style={{display:"flex", flexDirection:"row"}}>
+        <ul style={{width:"50%"}}>
           {categories.map((category, index) => (
-            <li key={index}>
-              <Link to={`/blog/${category._id}`}>- {category.name}</Link>
-            </li>
+             index < categories.length/2? 
+				<li key={index}>
+              		<Link to={`/blog/${category._id}`}>- {category.name}</Link>
+            	</li>
+			:null
           ))}
         </ul>
+		<ul style={{width:"50%"}}>
+		  {categories.map((category, index) => (
+			 index >= categories.length/2? 
+				<li key={index}>
+			  		<Link to={`/blog/${category._id}`}>- {category.name}</Link>
+				</li>
+			:null
+		  ))}
+		</ul>
       </div>
     </div>
   );

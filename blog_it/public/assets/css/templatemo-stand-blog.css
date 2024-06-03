@@ -1083,15 +1083,19 @@ footer p a:hover {
 		font-size: 18px;
 	}
 	.owl-banner .item .item-content {
-		text-align: center;
 		width: 80%;
 		left: 50%;
-		top: 50%;
+		top: 70%;
 		bottom: auto;
 		transform: translate(-50%,-50%);
 	}
 	.owl-banner .item .item-content h4 {
-		font-size: 24px;
+		font-size: 1vmax;
+		margin: 0;
+	}
+	.owl-banner .item .item-content ul {
+		padding: 0;
+		margin: 0;
 	}
 	.call-to-action {
 		text-align: center;
