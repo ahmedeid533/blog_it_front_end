@@ -1,5 +1,6 @@
+const REACT_APP_API="https://blog-it-zjku.onrender.com"
 const fetchPosts = async () => {
-	const response = await fetch(process.env.REACT_APP_API + "/posts", {
+	const response = await fetch(REACT_APP_API + "/posts", {
 		method: "GET",
 		credentials: 'include',
 		headers: {
@@ -17,7 +18,7 @@ const fetchPosts = async () => {
 fetchPosts();
 
 const fetchUsers = async () => {
-	const response = await fetch(process.env.REACT_APP_API + "/users", {
+	const response = await fetch(REACT_APP_API + "/users", {
 		method: "GET",
 		credentials: 'include',
 		headers: {
@@ -40,7 +41,7 @@ const fetchUsers = async () => {
 fetchUsers();
 
 const fetchComments = async () => {
-	const response = await fetch(process.env.REACT_APP_API + "/comments", {
+	const response = await fetch(REACT_APP_API + "/comments", {
 		method: "GET",
 		credentials: 'include',
 		headers: {
