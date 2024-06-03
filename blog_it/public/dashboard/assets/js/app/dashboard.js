@@ -33,6 +33,8 @@ const fetchUsers = async () => {
 		document.getElementById("usersCount").innerHTML = data.length;
 		const newUsers = data.filter(user => user.createdAt > new Date().getTime() - 86400000);
 		document.getElementById("newUsersCount").innerHTML = newUsers.length;
+		const newPerOld = newUsers.length / data.length * 100;
+		document.getElementById("newPerOld").innerHTML = "+" + newPerOld.toFixed(2) + "%";
 	}
 }
 fetchUsers();
