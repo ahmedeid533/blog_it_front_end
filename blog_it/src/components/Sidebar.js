@@ -5,6 +5,21 @@ import { Link } from 'react-router-dom';
 
 function Sidebar() {
 	const [blog, setBlog] = useState([]);
+	const [allBlogs, setAllBlogs] = useState([]);
+	const search = (query) => {
+		if (query !== "") {
+			document.getElementById('result').innerHTML = "Search Results"
+			const copy = allBlogs;
+			const result  = copy.filter((post) => {
+				return post.title.toLowerCase().includes(query.toLowerCase())
+			})
+			setBlog(result[0] ? result.slice(0,5) : [{title: "No results found"}])
+		}
+		else {
+			document.getElementById('result').innerHTML = "Recent Posts"
+			setBlog(allBlogs.slice(allBlogs.length - 4, allBlogs.length - 1))
+		}
+	}
 	const fetchBlogs = () => {
 		fetch(process.env.REACT_APP_API + "/posts", {
 			method: "GET",
@@ -24,7 +39,8 @@ function Sidebar() {
 				}
 				
 			})
-			setBlog(posts.splice(data.posts.length - 4, data.posts.length - 1));
+			setAllBlogs(posts);
+			setBlog(posts.slice(data.posts.length - 5, data.posts.length));
 		})
 		.catch(err => {
 			console.log(err);
@@ -39,15 +55,20 @@ function Sidebar() {
 		  <div className="row">
 			<div className="col-lg-12">
 			  <div className="sidebar-item search">
-				<form id="search_form" name="gs" method="GET" action="#">
-				  <input type="text" name="q" className="searchText" placeholder="type to search..." />
-				</form>
+				<input type="text" 
+						name="q"
+						className="searchText" 
+						placeholder="type to search..." 
+						onChange={(e) => {
+							search(e.target.value)
+						}}
+						/>
 			  </div>
 			</div>
 			<div className="col-lg-12">
 			  <div className="sidebar-item recent-posts">
 				<div className="sidebar-heading">
-				  <h2>Recent Posts</h2>
+				  <h2 id="result">Recent Posts</h2>
 				</div>
 				<div className="content">
 				  <ul>
