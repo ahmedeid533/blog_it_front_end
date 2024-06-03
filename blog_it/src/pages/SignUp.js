@@ -79,9 +79,10 @@ function SignUp() {
 								id="username"
 								onChange={(e) => {
 									setUsername(e.target.value)
-									if (e.target.value !== "")
+									if (e.target.value !== "") {
 										setErrorUser(true)
-									else {
+										setError("")
+									} else {
 										setError("Username cannot be empty")
 										setErrorUser(false)
 									}
@@ -97,9 +98,10 @@ function SignUp() {
 								aria-describedby="emailHelp"
 								onChange={(e) =>{ 
 									setEmail(e.target.value)
-									if (e.target.value !== "")
+									if (e.target.value !== "") {
 										setErrorEmail(true)
-									else {
+										setError("")
+									} else {
 										setError("Email cannot be empty")
 										setErrorEmail(false)
 									}
@@ -115,9 +117,10 @@ function SignUp() {
 								onChange={(e) => {
 									setPassword(e.target.value)
 									comparePassword()
-									if (e.target.value !== "")
+									if (e.target.value !== "") {
 										setErrorPassword(true)
-									else {
+										setError("")
+									} else {
 										setError("Password cannot be empty")
 										setErrorPassword(false)}
 								}}
