@@ -13,7 +13,7 @@ const fetchPosts = async () => {
 		console.log(data.error);
 	} else {
 		document.getElementById("postsCount").innerHTML = data.posts.length;
-		const newPosts = data.posts.filter(post => post.createdAt > new Date().getTime() - 86400000);
+		const newPosts = data.posts.filter(post => new Date(post.createdAt) > new Date().getTime() - 86400000);
 		if (newPosts.length !== null) {
 			const newPerOld = newPosts.length / data.posts.length * 100;
 			document.getElementById("newPostsPerOld").innerHTML = "+" + newPerOld.toFixed(2) + "%";
@@ -37,7 +37,7 @@ const fetchUsers = async () => {
 		console.log(data.error);
 	} else {
 		document.getElementById("usersCount").innerHTML = data.length;
-		const newUsers = data.filter(user => user.createdAt > new Date().getTime() - 86400000);
+		const newUsers = data.filter(user => new Date(user.createdAt) > new Date().getTime() - 86400000);
 		if (newUsers.length === null) {
 			document.getElementById("newUsers").innerHTML = 0;
 		} else {
@@ -65,7 +65,7 @@ const fetchComments = async () => {
 		console.log(data.error);
 	} else {
 		document.getElementById("commentsCount").innerHTML = data.comments.length;
-		const newComments = data.comments.filter(comment => comment.createdAt > new Date().getTime() - 86400000);
+		const newComments = data.comments.filter(comment => new Date(comment.createdAt) > new Date().getTime() - 86400000);
 		if (newComments.length !== null) {
 			const newPerOld = newComments.length / data.comments.length * 100;
 			document.getElementById("newCommentsPerOld").innerHTML = "+" + newPerOld.toFixed(2) + "%";
