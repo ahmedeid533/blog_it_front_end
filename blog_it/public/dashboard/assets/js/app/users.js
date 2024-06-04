@@ -79,10 +79,14 @@ function createUser(user,user_) {
 				'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
 			},
 		})
-		.then(res => res.json())
+		.then(res => {
+			res.json()
+			if (res.status === 200) {	
+				alert("user deleted successfully")
+			}
+
+		})
 		.then(data => {
-			console.log(data);
-			alert("user deleted successfully")
 			window.location.reload();
 		})
 		.catch(err => {
