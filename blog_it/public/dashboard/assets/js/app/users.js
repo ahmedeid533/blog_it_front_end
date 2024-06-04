@@ -56,7 +56,7 @@ user_.innerHTML = `
 	<span class="text-secondary text-xs font-weight-bold" id="date">14/09/20</span>
 </td>
 <td class="align-middle">
-	<a href="#!" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user" id="delete" >
+	<a href="#!" class="text-danger font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user" id="delete" >
 		Delete
 	</a>
 </td>`
@@ -68,8 +68,8 @@ function createUser(user,user_) {
 	userElement.querySelector('#_id').textContent = user._id ? user._id : 'No id';
 	userElement.querySelector('#bio').textContent = user.bio ? user.bio : 'No bio';
 	userElement.querySelector('span').textContent = user.status ? user.status : 'No status';
-	const date = new Date(user.joinedAt);
-	userElement.querySelector('#date').textContent = user.joinedAt ? `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}` : 'No date';
+	const date = new Date(user.createdAt);
+	userElement.querySelector('#date').textContent = user.createdAt ? `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}` : 'No date';
 	userElement.querySelector('#delete').addEventListener('click', () => {
 		fetch("https://blog-it-zjku.onrender.com" + `/users/${user._id}`, {
 			method: 'DELETE',
@@ -82,6 +82,11 @@ function createUser(user,user_) {
 		.then(res => res.json())
 		.then(data => {
 			console.log(data);
+			alert("user deleted successfully")
+			window.location.reload();
+		})
+		.catch(err => {
+			console.log(err);
 		})
 	})
 	return userElement;
