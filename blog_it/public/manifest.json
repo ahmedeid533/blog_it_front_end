@@ -1,19 +1,19 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Blog it",
+  "name": "Blog it simple blogs react web application for everyone",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "BI-modified.png",
+      "sizes": "64x64",
+      "type": "image/png"
     },
     {
-      "src": "logo192.png",
+      "src": "BI-modified.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "BI-modified.png",
       "type": "image/png",
       "sizes": "512x512"
     }
